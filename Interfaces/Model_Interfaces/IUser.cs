@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Identity;
 namespace FilmsCatalog.Models
 {
-    interface IUser
+    interface IUser<U> where U : IdentityUser
     {
         int Id { get; set; }
         string Name { get; set; }
@@ -11,7 +11,7 @@ namespace FilmsCatalog.Models
         string registrationDate { get; }
 
         int UserRegisterId { get; set; }
-        UserRegisterModel userRegister { get; set; }
+        U userRegister { get; set; }
         List<FilmModel> Films { get; set; }
     }
 }

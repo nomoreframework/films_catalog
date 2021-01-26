@@ -8,5 +8,13 @@ namespace FilmsCatalog.Models.Contexts
 {
     public class AppStorageContext : DbContext
     {
+        DbSet<UserModel> Users { get; set; }
+        DbSet<FilmModel> Films { get; set; }
+        DbSet<PosterModel> Posters { get; set; }
+
+        public AppStorageContext(DbContextOptions<AppStorageContext> options) : base (options)
+        {
+            Database.EnsureCreated();
+        }
     }
 }

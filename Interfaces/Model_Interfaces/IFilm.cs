@@ -14,5 +14,7 @@ namespace FilmsCatalog.Interfaces.Model_Interfaces
 
         int UserId { get; set; }
         UserModel U_ser { get; set; }
+        PosterModel Poster { get; set; }
+
     }
 }

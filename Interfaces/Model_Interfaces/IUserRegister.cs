@@ -2,9 +2,9 @@
 
 namespace FilmsCatalog.Interfaces.Model_Interfaces
 {
-    interface IUserRegister
+    interface IUserRegister<R> where R : UserModel
     {
         int Id { get; set; }
-        UserModel U_ser { get; set; }
+        R U_ser { get; set; }
     }
 }
