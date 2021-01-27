@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmsCatalog.Interfaces.Model_Interfaces;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmsCatalog.Models
 {
     public class FilmModel : IFilm
     {
-        int IFilm.Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        string IFilm.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        string IFilm.Director { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        string IFilm.FilmDescription { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IFilm.YearOfIssue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        string IFilm.PosterFilePath { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Director { get ; set ; }
+        public string FilmDescription { get ; set ; }
+        public int YearOfIssue { get ; set; }
+        public string PosterFilePath { get; set; }
 
-        string IFilm.dateOfCreation => throw new NotImplementedException();
+        public string dateOfCreation { get; private set;}
+        [NotMapped]
+        public IFormFile PosterView { get; set; }
 
-        int IFilm.UserId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        UserModel IFilm.U_ser { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        PosterModel IFilm.Poster { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int UserRegisterModelId { get; set; }
+        public UserRegisterModel U_ser { get; set; }
+        public PosterModel Poster { get; set; }
+            public FilmModel()
+        {
+            dateOfCreation = DateTime.Now.ToShortDateString();
+        }
     }
 }

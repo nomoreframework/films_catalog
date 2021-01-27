@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Controller_Interfaces\" />
+    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

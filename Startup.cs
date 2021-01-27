@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using FilmsCatalog.Models.Contexts;
 using FilmsCatalog.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace FilmsCatalog
 {
@@ -32,6 +33,12 @@ namespace FilmsCatalog
 
             services.AddIdentity<UserRegisterModel, IdentityRole>()
                 .AddEntityFrameworkStores<RegisterContext>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options => 
+                {
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/RegisterUser/Register");
+               });
             services.AddControllersWithViews();
         }
 
@@ -46,11 +53,13 @@ namespace FilmsCatalog
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

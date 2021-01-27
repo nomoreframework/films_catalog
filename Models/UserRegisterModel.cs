@@ -9,7 +9,6 @@ namespace FilmsCatalog.Models
 {
     public class UserRegisterModel : IdentityUser, IUserRegister<UserModel>
     {
-        public UserModel U_ser { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IUserRegister<UserModel>.Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<FilmModel> Films { get; set; }
     }
 }

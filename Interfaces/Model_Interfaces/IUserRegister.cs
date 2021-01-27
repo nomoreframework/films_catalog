@@ -1,10 +1,10 @@
 ﻿using FilmsCatalog.Models;
+using System.Collections.Generic;
 
 namespace FilmsCatalog.Interfaces.Model_Interfaces
 {
     interface IUserRegister<R> where R : UserModel
     {
-        int Id { get; set; }
-        R U_ser { get; set; }
+        public List<FilmModel> Films { get; set; }
     }
 }

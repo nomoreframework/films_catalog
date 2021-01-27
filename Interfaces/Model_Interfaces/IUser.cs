@@ -2,16 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 namespace FilmsCatalog.Models
 {
-    interface IUser<U> where U : IdentityUser
+    interface IUser<U> where U : UserRegisterModel
     {
         int Id { get; set; }
         string Name { get; set; }
         string SurName { get; set; }
         string FullName { get; set; }
-        string registrationDate { get; }
-
-        int UserRegisterId { get; set; }
-        U userRegister { get; set; }
-        List<FilmModel> Films { get; set; }
+        string Password { get; set; }
+        string Email { get; set; }
     }
 }

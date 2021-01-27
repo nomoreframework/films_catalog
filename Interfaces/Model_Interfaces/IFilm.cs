@@ -12,8 +12,8 @@ namespace FilmsCatalog.Interfaces.Model_Interfaces
         string PosterFilePath { get; set; }
         string dateOfCreation { get; }
 
-        int UserId { get; set; }
-        UserModel U_ser { get; set; }
+        int UserRegisterModelId { get; set; }
+        UserRegisterModel U_ser { get; set; }
         PosterModel Poster { get; set; }
 
     }
