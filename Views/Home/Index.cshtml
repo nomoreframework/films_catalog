@@ -11,17 +11,17 @@
 {
     <p>@User.Identity.Name</p>
 
-    <form method="post" asp-controller="RegisterUser" asp-action="SignOut">
+    <form method="post" asp-controller="Account" asp-action="SignOut">
         <input type="submit" value="Выход" />
     </form>
-    <form method="post" asp-controller="GetPosters" asp-action="SignOut">
+    @*<form method="post" asp-controller="GetPosters" asp-action="SignOut">
         <input type="submit" value="My Films" />
-    </form>
+    </form>*@
 }
 else
 {
-    <a asp-controller="RegisterUser" asp-action="SignIn">Вход</a>
-    <a asp-controller="RegisterUser" asp-action="Register">Регистрация</a>
+    <a asp-controller="Account" asp-action="LogIn">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
 }
 @foreach (var p in Model)
 {

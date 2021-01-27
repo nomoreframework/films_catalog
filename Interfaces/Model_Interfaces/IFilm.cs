@@ -13,7 +13,7 @@ namespace FilmsCatalog.Interfaces.Model_Interfaces
         string dateOfCreation { get; }
 
         int UserRegisterModelId { get; set; }
-        UserRegisterModel U_ser { get; set; }
+        UserRegisterModel UserRegisterModel { get; set; }
         PosterModel Poster { get; set; }
 
     }

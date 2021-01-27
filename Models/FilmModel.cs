@@ -22,7 +22,7 @@ namespace FilmsCatalog.Models
         public IFormFile PosterView { get; set; }
 
         public int UserRegisterModelId { get; set; }
-        public UserRegisterModel U_ser { get; set; }
+        public UserRegisterModel UserRegisterModel { get; set; }
         public PosterModel Poster { get; set; }
             public FilmModel()
         {

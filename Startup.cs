@@ -28,16 +28,11 @@ namespace FilmsCatalog
         {
             services.AddDbContext<AppStorageContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            services.AddDbContext<RegisterContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-
-           /* services.AddIdentity<UserRegisterModel, IdentityRole>()
-                .AddEntityFrameworkStores<RegisterContext>();*/
-
+      
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options => 
                 {
-                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/RegisterUser/Register");
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                });
             services.AddControllersWithViews();
         }
@@ -54,12 +49,11 @@ namespace FilmsCatalog
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

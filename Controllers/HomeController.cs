@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmsCatalog.Models.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace FilmsCatalog.Controllers
 {
@@ -21,7 +22,7 @@ namespace FilmsCatalog.Controllers
             this.context = context;
         }
 
-        public IActionResult Index() => View(context.Films?.ToList());
+        public async Task<IActionResult> Index() => View( await context.Films?.Include(f => f.Poster).ToListAsync());
 
         public IActionResult Privacy() => View();
         

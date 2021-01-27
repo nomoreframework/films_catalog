@@ -38,9 +38,6 @@ namespace FilmsCatalog.Migrations
                     b.Property<string>("PosterFilePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("U_serId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("UserRegisterModelId")
                         .HasColumnType("int");
 
@@ -52,7 +49,7 @@ namespace FilmsCatalog.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("U_serId");
+                    b.HasIndex("UserRegisterModelId");
 
                     b.ToTable("Films");
                 });
@@ -85,22 +82,10 @@ namespace FilmsCatalog.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordConfirm")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SurName")
@@ -116,63 +101,31 @@ namespace FilmsCatalog.Migrations
 
             modelBuilder.Entity("FilmsCatalog.Models.UserRegisterModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
+                    b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserRegisterModel");
+                    b.ToTable("RegUsers");
                 });
 
             modelBuilder.Entity("FilmsCatalog.Models.FilmModel", b =>
                 {
-                    b.HasOne("FilmsCatalog.Models.UserRegisterModel", "U_ser")
+                    b.HasOne("FilmsCatalog.Models.UserRegisterModel", "UserRegisterModel")
                         .WithMany("Films")
-                        .HasForeignKey("U_serId");
+                        .HasForeignKey("UserRegisterModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("U_ser");
+                    b.Navigation("UserRegisterModel");
                 });
 
             modelBuilder.Entity("FilmsCatalog.Models.PosterModel", b =>
