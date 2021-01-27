@@ -18,19 +18,19 @@ namespace FilmsCatalog.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name ="Password")]
-        [NotMapped]
+     //   [NotMapped]
         public string Password { get; set; }
 
         [Required]
         [Display(Name = "Email")]
-        [NotMapped]
+     //   [NotMapped]
         public string Email { get; set; }
 
         [Required]
         [Compare("Password", ErrorMessage = "Passwords don't match")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [NotMapped]
+      //  [NotMapped]
         public string PasswordConfirm { get; set; }
 
         public UserModel()

@@ -14,8 +14,7 @@ namespace FilmsCatalog.Models.Contexts
 
         public AppStorageContext(DbContextOptions<AppStorageContext> options) : base (options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            
         }
     }
 }

@@ -77,7 +77,8 @@ namespace FilmsCatalog.Controllers
                 var result =
                     await signInManager.PasswordSignInAsync(u_s_model.Email, u_s_model.Password, u_s_model.RememberMe, false);
                 if (result.Succeeded)
-                { 
+                {
+                    await Authenticate(u_s_model.Email);
                     if (!string.IsNullOrEmpty(u_s_model.ReturnUrl) && Url.IsLocalUrl(u_s_model.ReturnUrl))
                     {
                         return Redirect(u_s_model.ReturnUrl);
@@ -111,7 +112,7 @@ namespace FilmsCatalog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignOut()
         {
-            await signInManager.SignOutAsync();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
     }

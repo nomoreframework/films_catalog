@@ -1,0 +1,28 @@
+﻿@model FilmsCatalog.Models.FilmModel;
+
+
+<form asp-action="AddFilm" asp-controller="GetPosters" method="post" enctype="multipart/form-data">
+    <p>
+        <label>Name</label>
+        <input name="Name" class="form-control" />
+    </p>
+    <p>
+        <label>Director</label>
+        <input name="Name" class="form-control" />
+    </p>
+    <p>
+        <label>YearOfIssue</label>
+        <input type="number" name="YearOfIssue" class="form-control" />
+    </p>
+    <p>
+        <label>FilmDescription</label>
+        <input name="FilmDescription" class="form-control" />
+    </p>
+    <p>
+        <label>Аватар</label>
+        <input name="PosterView" type="file" class="form-control" />
+    </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>

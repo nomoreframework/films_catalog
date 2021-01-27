@@ -31,8 +31,8 @@ namespace FilmsCatalog
             services.AddDbContext<RegisterContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
-            services.AddIdentity<UserRegisterModel, IdentityRole>()
-                .AddEntityFrameworkStores<RegisterContext>();
+           /* services.AddIdentity<UserRegisterModel, IdentityRole>()
+                .AddEntityFrameworkStores<RegisterContext>();*/
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options => 
