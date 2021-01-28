@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,9 +7,11 @@ namespace FilmsCatalog.Models
     public class UserModel : IUser<UserRegisterModel>
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Name must not be empty")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Name must not be empty")]
         public string SurName { get; set; }
-        public string FullName { get; set; }
+        public string FullName { get; private set; }
         public string registrationDate { get; private set; }
         [Required]
         [DataType(DataType.Password)]
@@ -36,6 +34,7 @@ namespace FilmsCatalog.Models
         public UserModel()
         {
             registrationDate =  DateTime.Now.ToShortDateString();
+            FullName = $"{Name} {SurName}";
         }
     }
 }

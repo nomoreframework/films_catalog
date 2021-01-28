@@ -12,6 +12,21 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FilmsCatalog</a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" asp-controller="Account" asp-action="SignOut">
+                            <input type="submit" value="SignOut" class="nav-link text-dark" />
+                        </form>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="GetPosters" asp-action="MyFilms">MyFilms</a>
+
+                    }
+                    else
+                    {
+                        <a class="navbar-brand" asp-controller="Account" asp-action="LogIn">SignIn</a>
+                        <a class="navbar-brand" asp-controller="Account" asp-action="Register">Register</a>
+                    }
+                }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

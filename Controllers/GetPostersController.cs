@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using FilmsCatalog.Models;
 using FilmsCatalog.Models.Contexts;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace FilmsCatalog.Controllers
@@ -29,8 +26,7 @@ namespace FilmsCatalog.Controllers
         
         public async Task<IActionResult> MyFilms()
         {
-            //if (!User.Identity.IsAuthenticated) return BadRequest();
-           // UserRegisterModel registerModel = await context.RegUsers.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            if (!User.Identity.IsAuthenticated) return BadRequest();
             var films = context.Films.Include(f => f.Poster).Where(f => f.UserRegisterModel.Email == User.Identity.Name);
             return View(await films.ToListAsync());
         }
@@ -70,6 +66,51 @@ namespace FilmsCatalog.Controllers
             else ModelState.AddModelError("","Uncorrect");
 
             return View(fm);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (!User.Identity.IsAuthenticated) return BadRequest();
+            var film = await context.Films.FirstOrDefaultAsync(f => f.Id == id);
+            if(film != null)
+            {
+                context.Films.Remove(film);
+                await context.SaveChangesAsync();
+                return RedirectToAction("MyFilms","GetPosters");
+            }
+            return NotFound();
+        }
+        public async Task<IActionResult> UpdateFilm(int? id)
+        {
+            var film = await context.Films.Include(f => f.Poster).FirstOrDefaultAsync(f => f.Id == id);
+            if (film != null)
+            {
+                return View(film);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateFilm(FilmModel film)
+        {
+            if (ModelState.IsValid)
+            {
+                FilmModel filmModel;
+                if (film.PosterView != null)
+                {
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(film.PosterView.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)film.PosterView.Length);
+                    }
+                    filmModel = await context.Films.Include(p =>p.Poster).FirstOrDefaultAsync(f => f.Id == film.Id);
+                    filmModel.Poster.Poster = imageData;
+                    context.Films.Update(filmModel);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("MyFilms", "GetPosters");
+                }
+            }
+            ModelState.AddModelError("", "Uncorrect Description");
+            return View(film);
         }
     }
 }

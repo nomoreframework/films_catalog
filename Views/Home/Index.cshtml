@@ -1,47 +1,135 @@
-﻿@model IEnumerable<FilmsCatalog.Models.FilmModel>;
+﻿@model FilmsCatalog.Models.PaginationModels.MetaViewModel
+@using FilmsCatalog.Models.PaginationModels
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Films Catalog</h1>
+    <h3 class="display-4">Films Catalog</h3>
+
+    @{ if (User.Identity.IsAuthenticated)
+        {
+            <em class="position-absolute">@User.Identity.Name</em>
+        }
+    }
 </div>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>@User.Identity.Name</p>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    @@font-face {
+        font-family: 'FontAwesome';
+        src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal
+    }
 
-    <form method="post" asp-controller="Account" asp-action="SignOut">
-        <input type="submit" value="Выход" />
-    </form>
-    @*<form method="post" asp-controller="GetPosters" asp-action="SignOut">
-        <input type="submit" value="My Films" />
-    </form>*@
-}
-else
-{
-    <a asp-controller="Account" asp-action="LogIn">Вход</a>
-    <a asp-controller="Account" asp-action="Register">Регистрация</a>
-}
-@foreach (var p in Model)
-{
-    <div>
-        <h4>@p.Name</h4>
-        @if (p.Poster.Poster != null)
-        {
-            <img style='width:80px; height:60px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(p.Poster.Poster))" />
-        }
-        <p>
-            @p.Name
-        </p>
-        <p>
-            @p.Director
-        </p>
-        <p>
-            @p.YearOfIssue
-        </p>
-        <p>
-            @p.FilmDescription
-        </p>
+    .glyphicon {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+
+    .glyphicon-chevron-right:before {
+        content: "\f054";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\f053";
+    }
+</style>
+<h5>Films Catalog</h5>
+<form method="get">
+    <div class="form-inline">
+        <label>Name: </label>
+        <input name="Name" value="@Model.FilterViewModel.SelectedName" class="form-control" />
+
+        <label>D: </label>
+        <select name="Director" asp-items="Model.FilterViewModel.Films" class="form-control"></select>
+
+        <input type="submit" value="Filter" class="btn btn-outline-dark" />
     </div>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="Index"
+               asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+               asp-route-name="@(Model.FilterViewModel.SelectedName)"
+               asp-route-company="@(Model.FilterViewModel.SelectedCompany)">Sort by: name</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.YearOfIssueSort)"
+               asp-route-name="@(Model.FilterViewModel.SelectedName)"
+               asp-route-company="@(Model.FilterViewModel.SelectedCompany)">Sort by: year of issue</a>
+        </th>
+    </tr>
+    @foreach (FilmModel film in Model.FilmModels)
+    {
+            <tr>
+                <td rowspan="5">
+                    <p>
+                        <img style='width:128px; height:128px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(film.Poster.Poster))" />
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        @film.Name
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        @film.Director
+                    </p>
+                </td>
+            </tr>
+            <tr>
+               <td>
+                   <p>
+                       @film.YearOfIssue
+                   </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                   <p>
+                       @film.FilmDescription
+                   </p>
+               </td>
+            </tr>
+        
+    }
+</table>
+@if (Model.PaginViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PaginViewModel.PageNumber - 1)"
+       asp-route-name="@(Model.FilterViewModel.SelectedName)"
+       asp-route-company="@(Model.FilterViewModel.SelectedCompany)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn  btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PaginViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PaginViewModel.PageNumber + 1)"
+       asp-route-name="@(Model.FilterViewModel.SelectedName)"
+       asp-route-company="@(Model.FilterViewModel.SelectedCompany)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
 }

@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FilmsCatalog.Models.Contexts;
-using FilmsCatalog.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace FilmsCatalog
@@ -22,7 +15,6 @@ namespace FilmsCatalog
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
@@ -48,7 +40,6 @@ namespace FilmsCatalog
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
