@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FilmsCatalog.Models.FilmModel>
+
+<h3>My Films</h3>
+<a class="nav-link text-dark" asp-area="" asp-controller="GetPosters" asp-action="AddFilm">AddFilm</a>
+<table>
+    @{
+        foreach (var film in Model)
+        {
+
+            @if (film.Poster.Poster != null)
+            {
+                <tr>
+                    <td rowspan="5">
+                        <img style='width:256px; height:256px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(film.Poster.Poster))" />
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    <p style="color:brown">
+                        Name:  @film.Name
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Director:  @film.Director
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Year of issue:  @film.YearOfIssue
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Created:  @film.dateOfCreation
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Film description:  @film.FilmDescription
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <a class="btn-primary btn-danger" asp-area="" asp-controller="GetPosters" asp-action="Delete" asp-route-id="@film.Id">Delete</a>
+                    <a class="btn-primary" asp-area="" asp-controller="GetPosters" asp-action="UpdateFilm" asp-route-id="@film.Id">Update</a>
+                </th>
+            </tr>
+        }
+    }
+</table>

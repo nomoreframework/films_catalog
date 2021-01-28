@@ -1,0 +1,31 @@
+﻿@model FilmsCatalog.Models.FilmModel
+
+<form asp-action="UpdateFilm" asp-controller="GetPosters" method="post" enctype="multipart/form-data">
+    <p>
+        <label>Name</label>
+        <input name="Name" class="form-control" value="@Model?.Name" />
+    </p>
+    <p>
+        <label>Director</label>
+        <input name="Name" class="form-control" value="@Model?.Director" />
+    </p>
+    <p>
+        <label>YearOfIssue</label>
+        <input type="number" name="YearOfIssue" class="form-control" value="@Model?.YearOfIssue" />
+    </p>
+    <p>
+        <label>FilmDescription</label>
+        <input name="FilmDescription" class="form-control" value="@Model.FilmDescription" />
+    </p>
+    <p>
+        <label>Current poster</label>
+        <img style='width:156px; height:256px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(Model?.Poster.Poster))" />
+    </p>
+    <p>
+        <label>Poster</label>
+        <input name="PosterView" type="file" class="form-control" value="@Model?.Poster.Poster" />
+    </p>
+    <p>
+        <input type="submit" value="Update" />
+    </p>
+</form>

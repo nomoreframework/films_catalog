@@ -53,7 +53,6 @@ namespace FilmsCatalog.Controllers
                     films = films.OrderBy(s => s.Name);
                     break;
             }
-            // пагинация
             var count = await films.CountAsync();
             var items = await films.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 

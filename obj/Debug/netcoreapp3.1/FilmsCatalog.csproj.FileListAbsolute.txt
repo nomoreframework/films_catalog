@@ -8,12 +8,14 @@ F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\FilmsCatalog.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\FilmsCatalog.pdb
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\FilmsCatalog.Views.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\FilmsCatalog.Views.pdb
+F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Humanizer.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
@@ -53,7 +55,6 @@ F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Mic
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.csprojAssemblyReference.cache
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.AssemblyInfoInputs.cache
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.AssemblyInfo.cs
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.csproj.CoreCompileInputs.cache
@@ -66,6 +67,7 @@ F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\scopedcss\bundle\FilmsCatal
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.TagHelpers.input.cache
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.TagHelpers.output.cache
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.RazorCoreGenerate.cache
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\GetPosters\AddFilm.cshtml.g.cs
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -80,8 +82,8 @@ F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.csproj.CopyCom
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.dll
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.pdb
 F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.genruntimeconfig.cache
-F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\RegisterUser\SignIn.cshtml.g.cs
-F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\GetPosters\AddFilm.cshtml.g.cs
-F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\RegisterUser\Register.cshtml.g.cs
-F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Humanizer.dll
-F:\FilmsCatalog\FilmsCatalog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\FilmsCatalog.csprojAssemblyReference.cache
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\Account\LogIn.cshtml.g.cs
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\GetPosters\MyFilms.cshtml.g.cs
+F:\FilmsCatalog\FilmsCatalog\obj\Debug\netcoreapp3.1\Razor\Views\GetPosters\UpdateFilm.cshtml.g.cs
